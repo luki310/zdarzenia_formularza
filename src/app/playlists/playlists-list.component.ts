@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'playlists-list',
+  selector: "playlists-list",
   template: `
     <table class="table table-striped">
       <thead>
@@ -24,36 +24,43 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
             <label><input type="checkbox" [(ngModel)]="playlist.favourite" (click)="$event.stopPropagation();">
               Ulubiona</label>
           </td>
+          <td>
+            <span class="remove" (click)="remove(playlist)" >&times;</span>
+          </td>
         </tr>
       </tbody>
     </table>
   `,
-  styles: [`
+  styles: [
+    `
     .playlist-row {
         border-bottom: 3px solid transparent;
     }
-  `]
+  `
+  ]
 })
 export class PlaylistsListComponent implements OnInit {
+  playlistHover;
 
-  playlistHover
+  @Output("selected") onSelected = new EventEmitter();
 
-  @Output('selected')
-  onSelected = new EventEmitter()
+  @Input() playlists;
 
-  @Input()
-  playlists;
+  @Input() selected;
 
-  @Input()
-  selected;
-
-  select(playlist){
+  select(playlist) {
     this.onSelected.emit(playlist);
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  remove(playlist) {
+    let index = this.playlists.findIndex(p => p.id == playlist.id);
+    console.log(index);
+
+    this.playlists.splice(index, 1);
   }
+
+  ngOnInit() {}
 
 }

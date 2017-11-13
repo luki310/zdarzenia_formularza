@@ -30,9 +30,30 @@ export class PlaylistsComponent implements OnInit {
       tracks: 23,
       color: '#0000FF',
       favourite: false,
+    },
+    {
+      id: 3,
+      name: 'New hits',
+      tracks: 13,
+      color: '#ACBACB',
+      favourite: false,
+    },
+    {
+      id: 4,
+      name: 'EduWeb!',
+      tracks: 23,
+      color: '#AA00FF',
+      favourite: false,
+    },
+    {
+      id: 5,
+      name: 'The best',
+      tracks: 5,
+      color: '#0EE0FF',
+      favourite: false,
     }
   ]
-  
+
   select(playlist){
     if(playlist !== this.selected)
     this.mode = "selected"
