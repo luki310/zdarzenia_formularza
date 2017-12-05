@@ -36,6 +36,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     .playlist-row {
         border-bottom: 3px solid transparent;
     }
+    .remove {
+      cursor: pointer;
+    }
   `
   ]
 })
@@ -56,8 +59,6 @@ export class PlaylistsListComponent implements OnInit {
 
   remove(playlist) {
     let index = this.playlists.findIndex(p => p.id == playlist.id);
-    console.log(index);
-
     this.playlists.splice(index, 1);
   }
 
